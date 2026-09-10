@@ -1,7 +1,7 @@
 import { Html, Head, Main, NextScript } from "next/document";
 
 export default function Document() {
-  console.log("Document -PAGER ROUTER");
+  console.log("DOCUMENT PAGER ROUTER");
 
   return (
     <Html lang="en">

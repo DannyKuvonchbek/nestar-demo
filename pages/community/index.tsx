@@ -5,7 +5,7 @@ const Community = () => {
   const [title, setTitle] = useState<string>("Hello");
   return (
     <div>
-      Community{" "}
+      COMMUNITY{" "}
       <button onClick={() => alert("Hello MIT")} style={{ margin: "15px" }}>
         Press me
       </button>
