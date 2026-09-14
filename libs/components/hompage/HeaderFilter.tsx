@@ -18,7 +18,7 @@ const HeaderFilter = () => {
           </Box>
 
           <Box className={"box"}>
-            <span>Rooms</span>
+            <span>7 Rooms</span>
             <ExpandMoreIcon />
           </Box>
         </Stack>
