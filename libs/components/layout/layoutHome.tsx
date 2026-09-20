@@ -1,42 +1,68 @@
 import { Stack } from "@mui/material";
 import Head from "next/head";
-import Footer from "../Footer";
 import Top from "../Top";
-import HeaderFilter from "../hompage/HeaderFilter";
-//@ts-ignore
+import Footer from "../Footer";
+import HeaderFilter from "../../components/hompage/HeaderFilter";
+// @ts-ignore Swiper CSS entry points do not provide TypeScript declarations.
 import "swiper/css";
-//@ts-ignore
+// @ts-ignore Swiper CSS entry points do not provide TypeScript declarations.
 import "swiper/css/pagination";
-//@ts-ignore
+// @ts-ignore Swiper CSS entry points do not provide TypeScript declarations.
 import "swiper/css/navigation";
+import useDeviceDetect from "../../hooks/useDeviceDetect";
 
 const withLayoutMain = (Component: any) => {
   return (props: any) => {
-    return (
-      <>
-        <Head>
-          <title>Nestar</title>
-        </Head>
-        <Stack id="pc-wrap">
-          <Stack id={"top"}>
-            <Top />
-          </Stack>
+    const device = useDeviceDetect();
 
-          <Stack className={"header-main"}>
-            <Stack className={"container"}>
-              <HeaderFilter />
+    if (device == "mobile") {
+      return (
+        <>
+          <Head>
+            <title>Nestar</title>
+          </Head>
+          <Stack id="mobile-wrap">
+            <Stack id={"top"}>
+              <Top />
+            </Stack>
+
+            <Stack id={"main"}>
+              <Component {...props} />
+            </Stack>
+
+            <Stack id={"footer"}>
+              <Footer />
             </Stack>
           </Stack>
+        </>
+      );
+    } else {
+      return (
+        <>
+          <Head>
+            <title>Nestar</title>
+          </Head>
+          <Stack id="pc-wrap">
+            <Stack id={"top"}>
+              <Top />
+            </Stack>
+            <Stack className={"header-main"}>
+              <Stack className={"container"}>
+                <HeaderFilter />
+              </Stack>
+            </Stack>
 
-          <Stack id={"main"}>
-            <Component {...props} />
+            <Stack id={"main"}>
+              <Component {...props} />
+            </Stack>
+
+            <Stack id={"footer"}>
+              <Footer />
+            </Stack>
           </Stack>
-          <Stack id={"footer"}>
-            <Footer />
-          </Stack>
-        </Stack>
-      </>
-    );
+        </>
+      );
+    }
   };
 };
 
